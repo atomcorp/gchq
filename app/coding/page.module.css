@@ -1,0 +1,55 @@
+.container {
+  max-width: 30ch;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  place-content: center;
+  list-style: none;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+.cell {
+  background: var(--color);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.select {
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
+  text-transform: inherit;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  padding: 1rem;
+  text-align: center;
+  appearance: none; /* remove down arrow */
+}
+
+.select optgroup {
+  font-size: 1rem;
+  width: 100%;
+}
+
+.select option {
+  background-color: initial;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.explainer {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
