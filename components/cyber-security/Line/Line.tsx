@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Line.module.css";
 
 type Props = {
-  points: string[];
+  points: number[][][];
   color?: string;
 };
 
@@ -37,17 +37,21 @@ const Line = ({ points, color }: Props) => {
       >
         <polygon points={polygon} />
       </marker>
-      {points.map((point) => (
-        <polyline
-          key={point}
-          points={point}
-          stroke="black"
-          strokeDasharray="4"
-          markerMid={`url(#${id})`}
-          vectorEffect="non-scaling-stroke"
-          fill="none"
-        />
-      ))}
+      {points.map((pointArr) => {
+        const isVertical = pointArr[0][0] === pointArr[2][0];
+        const pointStr = pointArr.toString();
+        return (
+          <polyline
+            key={pointStr}
+            points={pointStr}
+            stroke="black"
+            strokeDasharray={isVertical ? 4 : 0}
+            markerMid={`url(#${id})`}
+            vectorEffect="non-scaling-stroke"
+            fill="none"
+          />
+        );
+      })}
     </svg>
   );
 };

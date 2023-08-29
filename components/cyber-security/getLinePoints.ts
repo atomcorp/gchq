@@ -49,7 +49,7 @@ const getLinePoints = (coords: number[][]) => {
   const finishXY = translatePointsToCoords(finish[0], finish[1]);
   const midXY = calculateMidCoords(startXY, finishXY);
 
-  return [startXY, midXY, finishXY].join(" ");
+  return [startXY, midXY, finishXY];
 };
 
 export default getLinePoints;

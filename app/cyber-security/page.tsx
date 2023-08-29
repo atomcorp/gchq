@@ -1,6 +1,7 @@
 "use client";
 
 import React, { CSSProperties } from "react";
+import { motion } from "framer-motion";
 
 import Line from "@/components/cyber-security/Line/Line";
 
@@ -26,8 +27,18 @@ type PlayerCSS = CSSProperties & {
   "--y": number;
 };
 
+const spring = {
+  type: "spring",
+  damping: 40,
+  stiffness: 300,
+};
+
 export default function Page() {
   const { state, move, reset } = useGame();
+  const cellRef = React.useRef<HTMLButtonElement>(null);
+
+  const cellWidth = cellRef.current?.clientWidth ?? 100;
+  const cellHeight = cellRef.current?.clientHeight ?? 100;
 
   const { x, y } = getPlayerPosition(state.playerPosition);
 
@@ -43,6 +54,7 @@ export default function Page() {
             {points.map((point, index) => {
               return (
                 <button
+                  ref={index === 0 ? cellRef : null}
                   data-coord={index + "/" + level}
                   className={css.cell}
                   type="button"
@@ -57,16 +69,14 @@ export default function Page() {
             })}
           </div>
         ))}
-        <div
-          style={
-            {
-              "--x": x,
-              "--y": y,
-            } as PlayerCSS
-          }
-          className={css.player}
-        >
-          🦌
+        <div className={css.playerContainer}>
+          <motion.div
+            transition={spring}
+            animate={{ x: x * cellWidth, y: y * cellHeight }}
+            className={css.player}
+          >
+            🦌
+          </motion.div>
         </div>
         <div className={css.lines}>
           <Line points={staticLinePoints} />
