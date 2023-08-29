@@ -24,6 +24,10 @@ const translatePointsToCoords = (level: number, point: number) => {
 };
 
 const getMidCoord = (start: number, finish: number) => {
+  // get difference between the points
+  // half it
+  // add to lowest point
+
   let [lowest, highest] = [start, finish].sort();
   const diff = (highest - lowest) / 2;
   const coord = lowest + diff;
@@ -31,9 +35,6 @@ const getMidCoord = (start: number, finish: number) => {
 };
 
 const calculateMidCoords = (start: number[], finish: number[]) => {
-  // get difference between the points
-  // half it
-  // add to lowest point
   const x = getMidCoord(start[0], finish[0]);
   const y = getMidCoord(start[1], finish[1]);
 

@@ -4,8 +4,9 @@
 }
 
 .grid {
-  --cell-width: 100px;
+  --cell-width: 150px;
   --cell-height: 100px;
+  --offset: calc(var(--cell-width) * 0.66);
   display: flex;
   flex-direction: column-reverse;
   position: relative;
@@ -31,7 +32,7 @@
 }
 
 .cell:nth-of-type(n + 4) {
-  transform: translateX(calc(var(--cell-width) / 2));
+  transform: translateX(var(--offset));
 }
 
 .lines {
@@ -39,6 +40,6 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  width: calc(100% + calc(100% / 6));
+  width: calc(100% + var(--offset));
   height: 100%;
 }

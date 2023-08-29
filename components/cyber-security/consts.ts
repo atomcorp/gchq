@@ -107,3 +107,9 @@ export const keyCoordsArray = ["1,2", "1,3"];
 export const staticLinePoints = staticRoutesArrays.map((route) =>
   getLinePoints(route)
 );
+export const dynamicLinePoints = dynamicRoutesArrays.map((route) =>
+  getLinePoints(route)
+);
+export const invertedDynamicLinePoints = invertedDynamicRoutesArrays.map(
+  (route) => getLinePoints(route)
+);
