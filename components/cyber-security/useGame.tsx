@@ -11,22 +11,22 @@ import {
 type status = "start" | "finish" | "playing";
 
 type stateType = {
-  playerPosition: string;
+  playerPosition: number[];
   isInverted: boolean;
   status: status;
   moves: number;
 };
 
 const initialState: stateType = {
-  playerPosition: "0,0",
+  playerPosition: [0, 0],
   isInverted: false,
   status: "start",
   moves: 0,
 };
 
 const validateMove = (
-  currentPosition: string,
-  nextPosition: string,
+  currentPosition: number[],
+  nextPosition: number[],
   isInverted: boolean
 ) => {
   const proposedMove = [currentPosition, nextPosition].toString();
@@ -53,11 +53,7 @@ const useGame = () => {
     const nextPlayerPositionStringy = nextPlayerPosition.toString();
 
     if (
-      !validateMove(
-        state.playerPosition,
-        nextPlayerPositionStringy,
-        state.isInverted
-      )
+      !validateMove(state.playerPosition, nextPlayerPosition, state.isInverted)
     ) {
       return;
     }
@@ -70,7 +66,7 @@ const useGame = () => {
 
     setState(
       produce(state, (draft) => {
-        draft.playerPosition = nextPlayerPositionStringy;
+        draft.playerPosition = nextPlayerPosition;
         draft.isInverted = isInverted;
         draft.moves++;
         draft.status = !isFinish ? "playing" : "finish";

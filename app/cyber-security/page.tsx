@@ -14,6 +14,7 @@ import {
   dynamicLinePoints,
   invertedDynamicLinePoints,
 } from "@/components/cyber-security/consts";
+import Controls from "@/components/cyber-security/Controls/Controls";
 
 type pointType = "start" | "finish" | "key" | "";
 
@@ -31,6 +32,7 @@ const spring = {
   type: "spring",
   damping: 40,
   stiffness: 300,
+  restDelta: 0.01,
 };
 
 export default function Page() {
@@ -45,15 +47,20 @@ export default function Page() {
   const invertableLinePoints = !state.isInverted
     ? dynamicLinePoints
     : invertedDynamicLinePoints;
-
+  console.log(state.playerPosition);
   return (
     <main className={css.container}>
+      <h1 className={css.title}>Cyber Security</h1>
+      <section className={css.content}>
+        <p>Source: https://www.gchq.gov.uk/news/xmaschallenge2022</p>
+      </section>
       <div className={css.grid}>
         {grid.map((points, level) => (
           <div className={css.level} key={level}>
             {points.map((point, index) => {
               return (
                 <button
+                  tabIndex={-1}
                   ref={index === 0 ? cellRef : null}
                   data-coord={index + "/" + level}
                   className={css.cell}
@@ -71,8 +78,13 @@ export default function Page() {
         ))}
         <div className={css.playerContainer}>
           <motion.div
+            initial={false}
             transition={spring}
-            animate={{ x: x * cellWidth, y: y * cellHeight }}
+            animate={{
+              x: x * cellWidth,
+              y: y * cellHeight,
+              scale: state.playerPosition[1] > 2 ? 1.5 : 1,
+            }}
             className={css.player}
           >
             🦌
@@ -83,11 +95,34 @@ export default function Page() {
           <Line points={invertableLinePoints} color="#DAA520" />
         </div>
       </div>
-      <p>Is won: {state.status === "finish" ? "Won" : ""}</p>
-      <p>Move: {state.moves}</p>
-      <button type="button" onClick={reset}>
-        Reset
-      </button>
+      <section className={css.content}>
+        <p>
+          Move: {state.moves} {state.status === "finish" ? " | Won!" : ""}
+        </p>
+        <button type="button" onClick={reset}>
+          Reset
+        </button>
+
+        <p>
+          Rudolph needs to escape from this cyberspace maze by reaching the
+          flag. He starts where indicated and can move North/East/South/West to
+          points along the same layer, or he can Ascend/Descend between layers
+          (as shown by the dashed lines).
+        </p>
+        <p>
+          He can only go in the direction of the arrows. If he touches a key,
+          then ALL the gold arrows will swap direction. What is his shortest
+          route to get to the flag – and can you describe it using one 7-letter
+          word?
+        </p>
+        <Controls
+          playerPosition={state.playerPosition}
+          handleClick={({ level, index }) => {
+            move([level, index]);
+          }}
+          reset={reset}
+        />
+      </section>
     </main>
   );
 }

@@ -31,10 +31,9 @@
  * is itself offset by 50% of the cell width
  */
 
-const getPlayerPosition = (yAndXtoString: string) => {
-  const [y, x] = yAndXtoString.split(",");
-  let xInt = parseInt(x, 10);
-  let yInt = y === "1" ? 0 : 2;
+const getPlayerPosition = ([y, x]: number[]) => {
+  let xInt = x;
+  let yInt = y === 1 ? 0 : 2;
   if (xInt > 2) {
     yInt++;
   }

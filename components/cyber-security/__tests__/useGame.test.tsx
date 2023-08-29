@@ -6,7 +6,7 @@ test("it should render the initial state", () => {
   const { result } = renderHook(() => useGame());
 
   expect(result.current.state).toEqual({
-    playerPosition: "0,0",
+    playerPosition: [0, 0],
     isInverted: false,
     status: "start",
     moves: 0,
@@ -20,7 +20,7 @@ test("it should move the player", () => {
     result.current.move([0, 1]);
   });
 
-  expect(result.current.state.playerPosition).toEqual("0,1");
+  expect(result.current.state.playerPosition).toEqual([0, 1]);
 });
 
 test("it should not move the player if not a valid static move", () => {
@@ -33,7 +33,7 @@ test("it should not move the player if not a valid static move", () => {
     result.current.move([0, 0]);
   });
 
-  expect(result.current.state.playerPosition).toEqual("0,1");
+  expect(result.current.state.playerPosition).toEqual([0, 1]);
 });
 
 test("it should move the player if a valid dynamic move", () => {
@@ -43,7 +43,7 @@ test("it should move the player if a valid dynamic move", () => {
     result.current.move([0, 3]);
   });
 
-  expect(result.current.state.playerPosition).toEqual("0,3");
+  expect(result.current.state.playerPosition).toEqual([0, 3]);
 });
 
 test("it should not move the player if not a valid dynamic move", () => {
@@ -56,7 +56,7 @@ test("it should not move the player if not a valid dynamic move", () => {
     result.current.move([0, 0]);
   });
 
-  expect(result.current.state.playerPosition).toEqual("0,3");
+  expect(result.current.state.playerPosition).toEqual([0, 3]);
 });
 
 test("it should move multiple valid moves", () => {
@@ -72,7 +72,7 @@ test("it should move multiple valid moves", () => {
     result.current.move([1, 4]);
   });
 
-  expect(result.current.state.playerPosition).toEqual("1,4");
+  expect(result.current.state.playerPosition).toEqual([1, 4]);
 });
 
 test("it should invert the dynamic routes when the player moves to a key", () => {
@@ -97,7 +97,7 @@ test("it should invert the dynamic routes when the player moves to a key", () =>
     result.current.move([1, 1]);
   });
 
-  expect(result.current.state.playerPosition).toEqual("1,1");
+  expect(result.current.state.playerPosition).toEqual([1, 1]);
   expect(result.current.state.isInverted).toEqual(true);
 });
 
@@ -179,7 +179,7 @@ it("should default the game state", () => {
   });
 
   expect(result.current.state).toEqual({
-    playerPosition: "0,0",
+    playerPosition: [0, 0],
     isInverted: false,
     status: "start",
     moves: 0,

@@ -1,6 +1,12 @@
 .container {
 }
 
+.title {
+  max-width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .grid {
   --cell-width: 150px;
   --cell-height: 100px;
@@ -9,6 +15,7 @@
   flex-direction: column-reverse;
   position: relative;
   width: max-content;
+  margin: 0 auto;
 }
 
 .level {
@@ -40,6 +47,11 @@
   z-index: 1;
 }
 
+.cell {
+  background: transparent;
+  border: 0;
+}
+
 .cell:nth-of-type(n + 4) {
   transform: translateX(var(--offset));
 }
@@ -51,4 +63,10 @@
   pointer-events: none;
   width: calc(100% + var(--offset));
   height: 100%;
+}
+
+.content {
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 18px;
 }
