@@ -8,6 +8,7 @@ import useGame from "@/components/cyber-security/useGame";
 import getPlayerPosition from "@/components/cyber-security/getPlayerPosition";
 
 import css from "./page.module.css";
+import { staticLinePoints } from "@/components/cyber-security/consts";
 
 type pointType = "start" | "finish" | "key" | "";
 
@@ -60,11 +61,14 @@ export default function Page() {
           🦌
         </div>
         <div className={css.lines}>
-          {/* todo map these to the ones in const */}
-          <Line points="1,5 1,3 1,1" />
-          {/* 0,0 -> 0,1 */}
-          <Line points="1,5 1.5,6 2,7" />
+          {/* <Line points="1,5 1,3 1,1" /> */}
+          {/* 0,0 -> 1,0 */}
+          {/* <Line points="1,5 1.5,6 2,7" /> */}
           {/* 0,0 -> 0,3 */}
+          {/* <Line points="1,5 2,5 3,5" /> */}
+          {staticLinePoints.map((points: string, index: number) => (
+            <Line points={points} key={index} />
+          ))}
         </div>
       </div>
       <p>Is won: {state.status === "finish" ? "Won" : ""}</p>

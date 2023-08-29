@@ -19,9 +19,9 @@ const Line = ({ points }: Props) => (
     <polyline
       points={points}
       stroke="black"
-      stroke-dasharray="4"
-      marker-mid="url(#arrowhead)"
-      vector-effect="non-scaling-stroke"
+      strokeDasharray="4"
+      markerMid="url(#arrowhead)"
+      vectorEffect="non-scaling-stroke"
       fill="none"
     />
   </svg>

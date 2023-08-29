@@ -1,4 +1,6 @@
-const staticRoutesArrays = [
+import getLinePoints from "./getLinePoints";
+
+export const staticRoutesArrays = [
   [
     [0, 0],
     [0, 1],
@@ -16,6 +18,10 @@ const staticRoutesArrays = [
     [0, 4],
   ],
   [
+    [0, 5],
+    [0, 4],
+  ],
+  [
     [1, 3],
     [0, 3],
   ],
@@ -29,7 +35,7 @@ const staticRoutesArrays = [
   ],
 ];
 
-const dynamicRoutesArrays = [
+export const dynamicRoutesArrays = [
   [
     [0, 0],
     [0, 3],
@@ -97,3 +103,7 @@ export const dynamicRoutes = getRoutes(dynamicRoutesArrays);
 export const invertedDynamicRoutes = getRoutes(invertedDynamicRoutesArrays);
 
 export const keyCoordsArray = ["1,2", "1,3"];
+
+export const staticLinePoints = staticRoutesArrays.map((route) =>
+  getLinePoints(route)
+);
