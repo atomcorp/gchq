@@ -16,11 +16,11 @@ import {
 } from "@/components/cyber-security/consts";
 import Controls from "@/components/cyber-security/Controls/Controls";
 
-type pointType = "start" | "finish" | "key" | "";
+type pointType = "" | "🚩" | "🔑" | "";
 
 const grid: pointType[][] = [
-  ["start", "", "", "", "", "finish"],
-  ["", "", "key", "key", "", ""],
+  ["", "", "", "", "", "🚩"],
+  ["", "", "🔑", "🔑", "", ""],
 ];
 
 type PlayerCSS = CSSProperties & {
@@ -47,7 +47,6 @@ export default function Page() {
   const invertableLinePoints = !state.isInverted
     ? dynamicLinePoints
     : invertedDynamicLinePoints;
-  console.log(state.playerPosition);
   return (
     <main className={css.container}>
       <h1 className={css.title}>Cyber Security</h1>
@@ -83,7 +82,7 @@ export default function Page() {
             animate={{
               x: x * cellWidth,
               y: y * cellHeight,
-              scale: state.playerPosition[1] > 2 ? 1.5 : 1,
+              scale: state.playerPosition[1] > 2 ? 1.2 : 1,
             }}
             className={css.player}
           >
