@@ -7,15 +7,19 @@
   margin-left: auto;
 }
 
-.grid {
+.game {
   --cell-width: 150px;
   --cell-height: 100px;
-  --offset: calc(var(--cell-width) / 2);
-  display: flex;
-  flex-direction: column-reverse;
   position: relative;
-  width: max-content;
+  max-width: 600px;
   margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  aspect-ratio: 16/9;
 }
 
 .level {
@@ -24,27 +28,13 @@
   grid-template-rows: repeat(2, var(--cell-height));
 }
 
-.playerContainer {
-  position: absolute;
-  height: 100%;
-  width: calc(100% + var(--offset));
-  left: 0;
-  top: 0;
-  pointer-events: none;
+.player {
+  grid-area: 1 / 1;
 }
 
-.player {
-  --x: 0;
-  --y: 0;
-  position: absolute;
-  height: var(--cell-height);
-  width: var(--cell-width);
-  display: grid;
-  place-items: center;
-  top: 0;
-  left: 0;
-  font-size: 2rem;
-  z-index: 1;
+.playerIcon {
+  transform: translate(-50%, -50%) scale(2);
+  width: 2ch;
 }
 
 .cell {
@@ -54,16 +44,12 @@
   z-index: 1;
 }
 
-.cell:nth-of-type(n + 4) {
-  transform: translateX(var(--offset));
-}
-
 .lines {
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
-  width: calc(100% + var(--offset));
+  width: 100%;
   height: 100%;
 }
 
