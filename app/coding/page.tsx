@@ -73,6 +73,7 @@ export default function Home() {
       return nextGrid;
     });
   };
+  const guess = grid.map((cell) => cell.letter).join("");
   return (
     <main className={css.container}>
       <h1>Coding</h1>
@@ -112,7 +113,8 @@ export default function Home() {
         })}
       </ol>
       <section>
-        <p>WORD: {grid.map((cell) => cell.letter).join("")}</p>
+        <p>WORD: {guess}</p>
+        {guess === "carpentry" && <p>Won!</p>}
       </section>
       <section className={css.explainer}>
         <ol>

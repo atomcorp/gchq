@@ -7,10 +7,10 @@ type Props = {
   points: number[];
 };
 
-const KeyNode = ({ move, points }: Props) => (
+const FinishNode = ({ move, points }: Props) => (
   <Node move={move} points={points}>
-    <div className={css.key}>🔑</div>
+    <div className={css.finish}>🚩</div>
   </Node>
 );
 
-export default KeyNode;
+export default FinishNode;

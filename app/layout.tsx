@@ -21,7 +21,8 @@ export default function RootLayout({
         <header>
           <nav>
             <Link href="/coding">Coding</Link> |{" "}
-            <Link href="/cyber-security">Cyber Security</Link>
+            <Link href="/cyber-security">Cyber Security</Link> |{" "}
+            <Link href="/">Home</Link>
           </nav>
         </header>
         {children}

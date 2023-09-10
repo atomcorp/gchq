@@ -96,13 +96,14 @@ export const nodePoints = [
   [5, 5],
   [2, 7],
   [4, 7],
-  [6, 7],
 ];
 
 export const keyPoints = [
   [2, 3],
   [5, 1],
 ];
+
+export const finishPoint = [6, 7];
 
 export const playerPoint = [1, 5];
 

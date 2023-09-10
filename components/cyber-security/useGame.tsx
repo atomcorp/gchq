@@ -7,6 +7,7 @@ import {
   invertedDynamicRoutes,
   keyCoordsArray,
   playerPoint,
+  finishPoint,
 } from "./consts";
 
 type status = "start" | "finish" | "playing";
@@ -63,7 +64,7 @@ const useGame = () => {
       ? !state.isInverted
       : state.isInverted;
 
-    const isFinish = nextPlayerPositionStringy === "6,7";
+    const isFinish = nextPlayerPositionStringy === finishPoint.toString();
 
     setState(
       produce(state, (draft) => {

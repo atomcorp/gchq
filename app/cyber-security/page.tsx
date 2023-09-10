@@ -14,10 +14,12 @@ import {
   invertedDynamicLinePoints,
   nodePoints,
   keyPoints,
+  finishPoint,
 } from "@/components/cyber-security/consts";
 import MoveNode from "@/components/cyber-security/Node/MoveNode";
 import Content from "@/components/cyber-security/Content/Content";
 import KeyNode from "@/components/cyber-security/Node/KeyNode";
+import FinishNode from "@/components/cyber-security/Node/FinishNode";
 
 const spring = {
   type: "spring",
@@ -54,16 +56,15 @@ export default function Page() {
         </div>
 
         <div className={css.grid}>
-          {nodePoints.map((points, key) => (
+          {nodePoints.map((points) => (
             <MoveNode key={points.toString()} move={move} points={points} />
           ))}
-          {keyPoints.map((points, key) => (
+          {keyPoints.map((points) => (
             <KeyNode key={points.toString()} move={move} points={points} />
           ))}
-          {/* TODO: add finish svg */}
+          <FinishNode move={move} points={finishPoint} />
           <motion.div
             initial={false}
-            layout="position"
             transition={spring}
             animate={{
               transform: getTranslate(x, y),

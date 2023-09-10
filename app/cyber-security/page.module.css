@@ -29,6 +29,7 @@
 }
 
 .player {
+  /* default player to first cell to make relative animation easier */
   grid-area: 1 / 1;
 }
 
